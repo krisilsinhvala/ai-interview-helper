@@ -29,6 +29,8 @@ const allowedOrigins = [
   "http://127.0.0.1:5000",
   // Render automatically sets RENDER_EXTERNAL_URL for the deployed service
   ...(process.env.RENDER_EXTERNAL_URL ? [process.env.RENDER_EXTERNAL_URL] : []),
+  // Frontend Render Static Site URL (set manually as env var on backend)
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ];
 app.use(
   cors({
@@ -37,8 +39,7 @@ app.use(
       if (!origin) return callback(null, true);
       // Allow all localhost origins in dev
       if (allowedOrigins.includes(origin)) return callback(null, true);
-      // In production, frontend is served from the same Express server,
-      // so same-origin requests won't include an Origin header — this handles edge cases.
+      // In production, allow all HTTPS origins (frontend is on separate domain)
       if (process.env.NODE_ENV === "production") return callback(null, true);
       callback(null, true); // Allow all during development
     },
