@@ -1,0 +1,107 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.wizard-container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .wizard-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: $border;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .wizard-step-node {
+      position: relative;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: $surface;
+      border: 2px solid $border;
+      color: $text-muted;
+      font-weight: 700;
+      font-size: 0.9rem;
+      @include flex-center;
+      transition: all $transition-fast;
+
+      &.active {
+        border-color: $primary;
+        background: $primary;
+        color: $text-white;
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+      }
+
+      &.completed {
+        border-color: $success;
+        background: $success;
+        color: $text-white;
+      }
+    }
+  }
+
+  .wizard-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .wizard-selectable-card {
+      @include card-base;
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      position: relative;
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: $radius-md;
+        background: $primary-light;
+        color: $primary;
+        @include flex-center;
+        flex-shrink: 0;
+      }
+
+      .card-label {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: $text;
+      }
+
+      &:hover {
+        border-color: $primary-hover;
+      }
+
+      &.selected {
+        border-color: $primary;
+        background: $primary-light;
+        box-shadow: 0 0 0 2px $primary;
+      }
+    }
+  }
+
+  .wizard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $border;
+  }
+}

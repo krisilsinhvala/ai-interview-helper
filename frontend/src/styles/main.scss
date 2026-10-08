@@ -1,0 +1,186 @@
+// PrepMind SCSS Architecture Main Entry Point
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset' as *;
+@use 'animations' as *;
+
+// Component Modules
+@use 'components/buttons' as *;
+@use 'components/cards' as *;
+@use 'components/forms' as *;
+@use 'components/badges' as *;
+@use 'components/progress' as *;
+@use 'components/modal' as *;
+@use 'components/toasts' as *;
+@use 'components/empty' as *;
+@use 'components/loading' as *;
+@use 'components/wizard' as *;
+
+// Page Modules
+@use 'pages/landing' as *;
+@use 'pages/auth' as *;
+@use 'pages/dashboard' as *;
+@use 'pages/resume' as *;
+@use 'pages/interview' as *;
+@use 'pages/results' as *;
+@use 'pages/history' as *;
+@use 'pages/profile' as *;
+
+// Main App Container & Layout
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .dashboard-layout {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - #{$navbar-height});
+
+    .sidebar {
+      width: $sidebar-width;
+      background: $surface;
+      border-right: 1px solid $border;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-shrink: 0;
+
+      @include tablet {
+        display: none; // Hidden on tablet/mobile, accessible via mobile bottom nav or drawer
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.75rem 1rem;
+        border-radius: $radius-md;
+        color: $text-muted;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all $transition-fast;
+
+        &:hover {
+          color: $primary;
+          background: $primary-light;
+        }
+
+        &.active {
+          color: $primary;
+          background: $primary-light;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background: $background;
+      overflow-y: auto;
+      max-width: 100%;
+
+      @include mobile {
+        padding: 1.25rem 1rem;
+      }
+    }
+  }
+}
+
+// Navbar Styles
+.navbar {
+  height: $navbar-height;
+  background: $surface;
+  border-bottom: 1px solid $border;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @include mobile {
+    padding: 0 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 1.35rem;
+    font-weight: 800;
+    font-family: $font-heading;
+    color: $primary;
+
+    svg {
+      color: $primary;
+    }
+  }
+
+  .nav-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .user-info {
+      text-align: right;
+      @include mobile { display: none; }
+      .name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: $text;
+      }
+      .email {
+        font-size: 0.78rem;
+        color: $text-muted;
+      }
+    }
+  }
+}
+
+// Footer Styles
+.app-footer {
+  background: $surface;
+  border-top: 1px solid $border;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: $text-muted;
+}
+
+// Mobile Bottom Navigation Bar
+.mobile-bottom-nav {
+  display: none;
+  @include tablet {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: $surface;
+    border-top: 1px solid $border;
+    z-index: 999;
+    align-items: center;
+    justify-content: space-around;
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      color: $text-muted;
+      font-weight: 500;
+
+      &.active {
+        color: $primary;
+        font-weight: 700;
+      }
+    }
+  }
+}

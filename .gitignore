@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.production
+
+# Build output (built by Render's build step, not committed)
+dist/
+build/
+
+# Uploads (runtime files, not committed - Render has ephemeral storage)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable
+
+# Editor files
+.vscode/
+.idea/

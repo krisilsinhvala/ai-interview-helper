@@ -1,0 +1,51 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.progress-container {
+  width: 100%;
+  margin-bottom: 0.5rem;
+
+  .progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: $radius-full;
+    overflow: hidden;
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, $primary 0%, $secondary 100%);
+      border-radius: $radius-full;
+      transition: width 0.4s ease;
+    }
+  }
+}
+
+// Score Ring Card
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient($primary var(--score-deg, 0deg), #e2e8f0 0deg);
+  @include flex-center;
+  position: relative;
+  margin: 0 auto 1rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: $surface;
+  }
+
+  .score-val {
+    position: relative;
+    z-index: 2;
+    font-size: 2.2rem;
+    font-weight: 800;
+    font-family: $font-heading;
+    color: $primary;
+  }
+}

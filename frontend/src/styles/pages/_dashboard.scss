@@ -1,0 +1,140 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.dashboard-container {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  .dashboard-greeting {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .greeting-text {
+      h1 {
+        font-size: 1.85rem;
+        margin-bottom: 0.25rem;
+      }
+      p {
+        color: $text-muted;
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  // Onboarding Checklist Banner
+  .onboarding-card {
+    @include card-base;
+    background: linear-gradient(135deg, $primary-light 0%, $secondary-light 100%);
+    border: 1px solid #c7d2fe;
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+
+    .onboarding-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .onboarding-progress {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $primary;
+        background: $surface;
+        padding: 0.3rem 0.75rem;
+        border-radius: $radius-full;
+      }
+    }
+
+    .checklist-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .checklist-item {
+        background: $surface;
+        padding: 0.85rem 1.25rem;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $border;
+
+        .item-label {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+
+          svg {
+            color: $text-light;
+            &.done { color: $success; }
+          }
+        }
+      }
+    }
+  }
+
+  // Next Step Action Banner
+  .next-step-card {
+    @include card-base;
+    background: $surface;
+    border-left: 4px solid $primary;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .next-step-content {
+      .next-step-badge {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: $primary;
+        margin-bottom: 0.25rem;
+      }
+      h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.25rem;
+      }
+      p {
+        font-size: 0.9rem;
+        color: $text-muted;
+      }
+    }
+  }
+
+  // Stats Grid
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}

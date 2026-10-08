@@ -1,0 +1,114 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.auth-split-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+
+  // Left Brand Hero
+  .auth-left-brand {
+    background: linear-gradient(135deg, $primary-dark 0%, $primary 50%, $secondary 100%);
+    color: $text-white;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      display: none; // Hide left brand column on tablet/mobile for clean focus on login form
+    }
+
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      font-family: $font-heading;
+    }
+
+    .brand-center {
+      max-width: 440px;
+      h2 {
+        font-size: 2.25rem;
+        color: $text-white;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      p {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+      }
+    }
+
+    .brand-bottom-quote {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 1.25rem 1.5rem;
+      border-radius: $radius-lg;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  // Right Form Container
+  .auth-right-form {
+    background: $background;
+    @include flex-center;
+    padding: 2.5rem 1.5rem;
+
+    .auth-card {
+      @include card-base;
+      width: 100%;
+      max-width: 440px;
+      padding: 2.5rem 2rem;
+
+      .auth-header {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .brand-mobile-logo {
+          display: none;
+          @include tablet {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: $primary;
+            font-size: 1.25rem;
+            font-weight: 800;
+            font-family: $font-heading;
+            margin-bottom: 1rem;
+          }
+        }
+
+        h1 {
+          font-size: 1.75rem;
+          margin-bottom: 0.4rem;
+        }
+
+        p {
+          color: $text-muted;
+          font-size: 0.9rem;
+        }
+      }
+
+      .auth-footer-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: $text-muted;
+
+        a {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

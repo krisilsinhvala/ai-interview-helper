@@ -1,0 +1,255 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.landing-container {
+  overflow-x: hidden;
+
+  // Hero Section
+  .hero-section {
+    padding: 5rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .hero-content {
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.85rem;
+        background: $primary-light;
+        color: $primary;
+        border-radius: $radius-full;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+      }
+
+      h1.hero-title {
+        font-size: 3.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        color: $text;
+        margin-bottom: 1.25rem;
+
+        .text-gradient {
+          background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        @include mobile {
+          font-size: 2.25rem;
+        }
+      }
+
+      p.hero-subtitle {
+        font-size: 1.15rem;
+        color: $text-muted;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 520px;
+
+        @include tablet {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      .hero-cta-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+
+        @include tablet {
+          justify-content: center;
+        }
+
+        @include mobile {
+          flex-direction: column;
+          width: 100%;
+          .btn { width: 100%; }
+        }
+      }
+
+      .hero-trust-indicators {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $text-muted;
+
+        @include tablet {
+          justify-content: center;
+        }
+
+        .trust-item {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          color: $text;
+          svg { color: $success; }
+        }
+      }
+    }
+
+    .hero-preview-card {
+      @include card-base;
+      padding: 1.75rem;
+      background: $surface;
+      box-shadow: $shadow-lg;
+      border: 1px solid #c7d2fe;
+
+      .preview-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $border;
+      }
+    }
+  }
+
+  // How It Works Section
+  .how-it-works-section {
+    padding: 5rem 1.5rem;
+    background: $surface;
+    border-top: 1px solid $border;
+    border-bottom: 1px solid $border;
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        color: $text-muted;
+        font-size: 1.05rem;
+      }
+    }
+
+    .steps-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+
+      @include tablet {
+        grid-template-columns: 1fr;
+      }
+
+      .step-card {
+        @include card-base;
+        padding: 2rem 1.5rem;
+        position: relative;
+        text-align: left;
+
+        .step-number {
+          font-family: $font-heading;
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: $primary-light;
+          line-height: 1;
+          margin-bottom: 1rem;
+
+          span {
+            background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          margin-bottom: 0.65rem;
+        }
+
+        p {
+          color: $text-muted;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  // Features Grid
+  .features-section {
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        color: $text-muted;
+        font-size: 1.05rem;
+      }
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        @include card-base;
+        @include card-hover;
+        padding: 1.75rem;
+
+        .feature-icon-wrapper {
+          width: 48px;
+          height: 48px;
+          border-radius: $radius-md;
+          background: $primary-light;
+          color: $primary;
+          @include flex-center;
+          margin-bottom: 1.25rem;
+        }
+
+        h3 {
+          font-size: 1.15rem;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: $text-muted;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

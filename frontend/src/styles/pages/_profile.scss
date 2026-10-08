@@ -1,0 +1,39 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.profile-container {
+  max-width: 850px;
+  margin: 0 auto;
+
+  .profile-header-card {
+    @include card-base;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      color: $text-white;
+      font-size: 2rem;
+      font-weight: 800;
+      @include flex-center;
+      flex-shrink: 0;
+    }
+
+    .profile-details {
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+      }
+      p {
+        color: $text-muted;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

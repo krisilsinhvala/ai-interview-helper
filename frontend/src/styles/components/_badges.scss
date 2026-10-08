@@ -1,0 +1,44 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: $radius-full;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+
+  &.badge-primary {
+    background-color: $primary-light;
+    color: $primary;
+  }
+
+  &.badge-secondary {
+    background-color: $secondary-light;
+    color: $secondary;
+  }
+
+  &.badge-success {
+    background-color: $success-light;
+    color: $success;
+  }
+
+  &.badge-warning {
+    background-color: $warning-light;
+    color: $warning;
+  }
+
+  &.badge-error {
+    background-color: $error-light;
+    color: $error;
+  }
+
+  &.badge-neutral {
+    background-color: #f1f5f9;
+    color: $text-muted;
+  }
+}

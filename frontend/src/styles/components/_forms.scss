@@ -1,0 +1,90 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $text;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      color: $text-muted;
+      pointer-events: none;
+    }
+
+    input {
+      padding-left: 2.75rem;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 0.85rem;
+      color: $text-muted;
+      padding: 0.25rem;
+      border-radius: $radius-sm;
+      &:hover {
+        color: $text;
+      }
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: $surface;
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    color: $text;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &::placeholder {
+      color: $text-light;
+    }
+
+    &:focus {
+      border-color: $primary;
+      @include focus-ring;
+    }
+
+    &:disabled {
+      background-color: $surface-hover;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-hint {
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+
+  .form-error {
+    font-size: 0.8rem;
+    color: $error;
+    font-weight: 500;
+  }
+}

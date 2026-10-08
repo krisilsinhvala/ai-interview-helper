@@ -1,0 +1,26 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  @include flex-center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+
+  .modal-container {
+    background: $surface;
+    border-radius: $radius-xl;
+    width: 100%;
+    max-width: 540px;
+    padding: 2rem;
+    box-shadow: $shadow-lg;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    @include custom-scrollbar;
+  }
+}

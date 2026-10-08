@@ -1,0 +1,83 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.card {
+  @include card-base;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  &.card-interactive {
+    @include card-hover;
+    cursor: pointer;
+  }
+
+  &.card-bordered {
+    border-color: $border;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid $border;
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: $text;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
+// Stat Card Component
+.stat-card {
+  @include card-base;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    @include flex-center;
+    background: $primary-light;
+    color: $primary;
+    flex-shrink: 0;
+
+    &.stat-icon-purple {
+      background: $secondary-light;
+      color: $secondary;
+    }
+    &.stat-icon-green {
+      background: $success-light;
+      color: $success;
+    }
+    &.stat-icon-amber {
+      background: $warning-light;
+      color: $warning;
+    }
+  }
+
+  .stat-info {
+    flex: 1;
+    .stat-label {
+      font-size: 0.85rem;
+      color: $text-muted;
+      font-weight: 500;
+    }
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: $text;
+      font-family: $font-heading;
+      line-height: 1.2;
+    }
+  }
+}

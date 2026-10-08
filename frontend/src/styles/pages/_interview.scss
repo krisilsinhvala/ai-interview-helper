@@ -1,0 +1,102 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.interview-practice-container {
+  max-width: 850px;
+  margin: 0 auto;
+
+  .practice-header {
+    margin-bottom: 1.5rem;
+    .practice-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $text-muted;
+    }
+  }
+
+  .question-card {
+    @include card-base;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+
+    .question-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .question-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: $text;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .answer-card {
+    @include card-base;
+    padding: 1.75rem;
+
+    .tip-box {
+      background: $info-light;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      color: $info;
+      padding: 0.75rem 1rem;
+      border-radius: $radius-md;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  // AI Evaluation Breakdown Box
+  .evaluation-card {
+    @include card-base;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid $primary;
+
+    .eval-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $border;
+
+      .score-pill {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: $success;
+        background: $success-light;
+        padding: 0.35rem 1rem;
+        border-radius: $radius-full;
+      }
+    }
+
+    .eval-section {
+      margin-bottom: 1.25rem;
+      h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      ul {
+        padding-left: 1.25rem;
+        font-size: 0.9rem;
+        color: $text;
+        li { margin-bottom: 0.35rem; }
+      }
+    }
+  }
+}
