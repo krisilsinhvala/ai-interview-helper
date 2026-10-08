@@ -50,14 +50,16 @@ app.use(
 // Serve uploads statically
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Root Endpoint
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "PrepMind AI API is running",
-    environment: process.env.NODE_ENV || "development",
+// Root Endpoint — only active in development (production serves React app instead)
+if (process.env.NODE_ENV !== "production") {
+  app.get("/", (req, res) => {
+    res.json({
+      success: true,
+      message: "PrepMind AI API is running",
+      environment: process.env.NODE_ENV || "development",
+    });
   });
-});
+}
 
 // Health Check API Endpoint
 app.get("/api/health", (req, res) => {
